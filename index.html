@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ================= FULL SEO META TAGS ================= -->
+    <title>Hijibiji | Software, Embedded Hardware & R&D Collective</title>
+    <meta name="description" content="Hijibiji is a tech collective based in Bogra, Bangladesh. We build pragmatic software, engineer custom hardware solutions, and conduct innovative R&D. Serious tech, sketched with soul.">
+    <meta name="keywords" content="Hijibiji, Software Development Bangladesh, Hardware Engineering Bogra, R&D Collective, Custom Web Apps, IoT Solutions Bangladesh, Tech Agency Bogra">
+    <meta name="author" content="Hijibiji Team">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://hijibiji.tech">
+    <meta name="theme-color" content="#f0f4f8">
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Hijibiji">
+    <meta property="og:url" content="https://hijibiji.tech/">
+    <meta property="og:title" content="Hijibiji | Software, Embedded Hardware & R&D Collective">
+    <meta property="og:description" content="A small collective in Bogra, Bangladesh building software, wrestling with hardware, and exploring R&D. Serious tech, sketched with soul.">
+    <meta property="og:image" content="https://hijibiji.tech/og-image.jpg">
+    <meta property="og:image:alt" content="Hijibiji Tech Banner">
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hijibiji.tech/">
+    <meta property="twitter:title" content="Hijibiji | Software, Hardware & R&D">
+    <meta property="twitter:description" content="Serious tech, sketched with soul. Software & hardware engineering collective based in Bangladesh.">
+    <meta property="twitter:image" content="https://hijibiji.tech/og-image.jpg">
+
+    <!-- ================= FONTS & ICONS ================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+
+    <!-- ================= TAILWIND CSS ================= -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        hand: ['Caveat', 'cursive'],
+                    },
+                    colors: {
+                        fog: {
+                            base: '#f8fafc',
+                            blue: '#e0f2fe',  
+                            beige: '#f5f5dc', 
+                            dark: '#1e293b',
+                            text: '#475569',
+                            muted: '#94a3b8'
+                        }
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
+                        '5xl': '2.5rem',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- ================= CUSTOM LIGHT FOG STYLES ================= -->
+    <style>
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+            overflow-x: hidden;
+        }
+
+        .fog-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(245,245,220,0.45) 50%, rgba(224,242,254,0.55) 100%);
+        }
+
+        .fog-blob {
+            position: absolute;
+            filter: blur(90px);
+            opacity: 0.65;
+            animation: floatFog 18s ease-in-out infinite alternate;
+        }
+
+        .blob-1 { top: -10%; left: -10%; width: 55vw; height: 55vw; background: #e0f2fe; animation-delay: 0s; }
+        .blob-2 { bottom: -20%; right: -10%; width: 65vw; height: 65vw; background: #f5f5dc; animation-delay: -6s; }
+        .blob-3 { top: 35%; left: 25%; width: 45vw; height: 45vw; background: #ffffff; animation-delay: -12s; }
+
+        @keyframes floatFog {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(4%, 4%) scale(1.04); }
+            100% { transform: translate(-4%, -4%) scale(0.96); }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.06);
+            background: rgba(255, 255, 255, 0.65);
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        ::selection {
+            background-color: #bae6fd;
+            color: #0f172a;
+        }
+    </style>
+</head>
+<body class="antialiased font-sans text-fog-text">
+
+    <div class="fog-container" aria-hidden="true">
+        <div class="fog-blob blob-1"></div>
+        <div class="fog-blob blob-2"></div>
+        <div class="fog-blob blob-3"></div>
+    </div>
+
+    <!-- ================= NAVIGATION ================= -->
+    <header class="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 w-full">
+        <nav class="glass-nav rounded-full px-6 py-3 flex items-center justify-between max-w-4xl w-full shadow-sm" aria-label="Main Navigation">
+            <a href="#" class="font-hand text-3xl font-bold tracking-wide text-fog-dark hover:text-slate-600 transition-colors" aria-label="Hijibiji Home">
+                Hijibiji
+            </a>
+            
+            <div class="hidden md:flex gap-8 text-sm font-medium text-slate-600">
+                <a href="#about" class="hover:text-fog-dark transition-colors">About</a>
+                <a href="#services" class="hover:text-fog-dark transition-colors">Services</a>
+                <a href="#lab" class="hover:text-fog-dark transition-colors">Lab</a>
+                <a href="#impact" class="hover:text-fog-dark transition-colors">Impact</a>
+            </div>
+            
+            <a href="#contact" class="bg-fog-dark text-white px-5 py-2 rounded-full text-xs font-semibold hover:bg-slate-700 transition-colors shadow-sm flex items-center gap-1.5">
+                <span>Say Hello</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5" aria-hidden="true"></i>
+            </a>
+        </nav>
+    </header>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-8 pt-32 sm:pt-36 pb-24 flex flex-col gap-24 sm:gap-32">
+
+        <!-- HERO SECTION -->
+        <section class="min-h-[50vh] flex flex-col justify-center items-center text-center mt-6 sm:mt-10 reveal">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card text-xs font-medium text-slate-600 mb-6 border border-white">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-sky-600" aria-hidden="true"></i> Based in Bangladesh
+            </div>
+            
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-slate-800 leading-tight mb-4 max-w-3xl">
+                Serious tech, <br>
+                <span class="font-hand text-4xl sm:text-6xl md:text-7xl text-slate-500 font-normal inline-block -rotate-1 mt-1">sketched with soul.</span>
+            </h1>
+            
+            <p class="text-sm sm:text-base text-slate-600 max-w-xl leading-relaxed font-normal mx-auto">
+                We're a small collective building software, wrestling with hardware, and chasing ideas that don't have a name yet. No office, plenty of chaos, but we ship things that work.
+            </p>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="scroll-mt-28 reveal">
+            <article class="glass-card rounded-5xl p-8 sm:p-12 relative overflow-hidden">
+                <header class="mb-8 border-b border-slate-200/60 pb-4">
+                    <h2 class="text-xl sm:text-2xl font-semibold text-slate-800 flex flex-wrap items-center gap-2">
+                        Who We Are
+                        <span class="font-hand text-slate-400 text-xl sm:text-2xl font-normal ml-1">/ page 1</span>
+                    </h2>
+                </header>
+                
+                <div class="grid md:grid-cols-5 gap-8 sm:gap-10 items-start">
+                    <div class="md:col-span-3 text-slate-600 text-sm sm:text-base leading-relaxed space-y-4 font-normal">
+                        <p>
+                            We're a small team — three people, sometimes four, depends on exam season. We write things down before we build them. The good ideas usually show up in the margins, next to the doodles, not in the "official" plan.
+                        </p>
+                        <p>
+                            We build tools that actually work on Monday morning. We've burned our hands on enough 2am bugs to know better now. Operating out of Bogra, Bangladesh.
+                        </p>
+                    </div>
+                    <div class="md:col-span-2 flex flex-col gap-3">
+                        <div class="bg-white/50 rounded-2xl p-4 sm:p-5 flex items-start gap-3.5 border border-white">
+                            <div class="bg-sky-100/80 p-2.5 rounded-xl text-sky-700 shrink-0 mt-0.5">
+                                <i data-lucide="check-circle" class="w-4 h-4" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-slate-800 text-sm">Pragmatic Shipping</h3>
+                                <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">Stable code, fewer dependencies, no drama.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white/50 rounded-2xl p-4 sm:p-5 flex items-start gap-3.5 border border-white">
+                            <div class="bg-amber-100/80 p-2.5 rounded-xl text-amber-700 shrink-0 mt-0.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-slate-800 text-sm">Relentless Curiosity</h3>
+                                <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">We still argue about whether R&D counts as "playing around".</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- SERVICES SECTION -->
+        <section id="services" class="scroll-mt-28 reveal">
+            <header class="mb-10 text-center">
+                <h2 class="text-xl sm:text-2xl font-semibold text-slate-800 flex flex-wrap items-center justify-center gap-2">
+                    What We Do
+                    <span class="font-hand text-slate-400 text-xl sm:text-2xl font-normal ml-1">/ our craft</span>
+                </h2>
+            </header>
+            
+            <div class="grid sm:grid-cols-3 gap-5 sm:gap-6">
+                <!-- Software -->
+                <article class="glass-card rounded-4xl p-7 sm:p-8 flex flex-col h-full">
+                    <div class="bg-white rounded-2xl w-12 h-12 flex items-center justify-center mb-5 shadow-sm border border-slate-100">
+                        <i data-lucide="code-2" class="w-5 h-5 text-slate-700" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-800 mb-2">Software</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed flex-grow font-normal">
+                        Websites, dashboards, internal tools. The stuff that has to actually run when someone refreshes the page on Monday morning. Less drama, more stability.
+                    </p>
+                </article>
+                
+                <!-- Hardware -->
+                <article class="glass-card rounded-4xl p-7 sm:p-8 flex flex-col h-full">
+                    <div class="bg-white rounded-2xl w-12 h-12 flex items-center justify-center mb-5 shadow-sm border border-slate-100">
+                        <i data-lucide="cpu" class="w-5 h-5 text-slate-700" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-800 mb-2">Hardware</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed flex-grow font-normal">
+                        PCBs, sensors, enclosures — anywhere there's a wire, we've probably argued about it. That bracket took 4 prints. The 5th one fit.
+                    </p>
+                </article>
+
+                <!-- R&D -->
+                <article class="glass-card rounded-4xl p-7 sm:p-8 flex flex-col h-full">
+                    <div class="bg-white rounded-2xl w-12 h-12 flex items-center justify-center mb-5 shadow-sm border border-slate-100">
+                        <i data-lucide="flask-conical" class="w-5 h-5 text-slate-700" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-800 mb-2">R & D</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed flex-grow font-normal">
+                        The "let's see what happens" pile. Most of it goes nowhere. Some of it ships. This is the reason the other two exist.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- LAB NOTEBOOK SECTION -->
+        <section id="lab" class="scroll-mt-28 reveal">
+            <div class="glass-card rounded-5xl p-6 sm:p-12">
+                <header class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4 border-b border-slate-200/60 pb-5">
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-semibold text-slate-800 flex flex-wrap items-center gap-2 mb-1">
+                            Lab Notebook
+                            <span class="font-hand text-slate-400 text-xl sm:text-2xl font-normal">/ true stories</span>
+                        </h2>
+                        <p class="text-xs sm:text-sm text-slate-500">Things we're building, half-building, or rebuilding.</p>
+                    </div>
+                    <div class="px-3 py-1 bg-white/70 rounded-full text-[11px] font-semibold text-slate-600 border border-white flex items-center gap-1.5 shrink-0">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>Active Experiments</span>
+                    </div>
+                </header>
+
+                <div class="space-y-4">
+                    <article class="bg-white/40 hover:bg-white/60 transition-colors rounded-3xl p-5 sm:p-6 flex flex-col md:flex-row gap-3 md:gap-8 items-start border border-white/60">
+                        <div class="min-w-[130px] shrink-0">
+                            <h3 class="font-semibold text-slate-800 text-base">Project Wren</h3>
+                            <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block mt-0.5">Entry #04</span>
+                        </div>
+                        <div class="flex-grow">
+                            <p class="text-slate-600 text-sm leading-relaxed mb-3">
+                                Cheap air-quality sensors for small rooms. Day 12: readings went weird. Two hours of debugging later — a moth had landed on the sensor. Moth relocated. Data, fixed.
+                            </p>
+                            <span class="inline-flex items-center gap-1.5 text-[11px] font-medium text-slate-500 bg-white/60 px-3 py-1 rounded-full border border-white">
+                                <i data-lucide="activity" class="w-3 h-3" aria-hidden="true"></i> Field testing
+                            </span>
+                        </div>
+                    </article>
+
+                    <article class="bg-white/40 hover:bg-white/60 transition-colors rounded-3xl p-5 sm:p-6 flex flex-col md:flex-row gap-3 md:gap-8 items-start border border-white/60">
+                        <div class="min-w-[130px] shrink-0">
+                            <h3 class="font-semibold text-slate-800 text-base">Inkwell</h3>
+                            <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block mt-0.5">Entry #07</span>
+                        </div>
+                        <div class="flex-grow">
+                            <p class="text-slate-600 text-sm leading-relaxed mb-3">
+                                A to-do app for people who delete to-do apps within a week. No streaks, no badges, no "you're falling behind" — just a list.
+                            </p>
+                            <span class="inline-flex items-center gap-1.5 text-[11px] font-medium text-slate-500 bg-white/60 px-3 py-1 rounded-full border border-white">
+                                <i data-lucide="lock" class="w-3 h-3" aria-hidden="true"></i> Private beta
+                            </span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- IMPACT SECTION -->
+        <section id="impact" class="scroll-mt-28 reveal">
+            <header class="mb-10 text-center">
+                <h2 class="text-xl sm:text-2xl font-semibold text-slate-800 flex flex-wrap items-center justify-center gap-2">
+                    Beyond the Desk
+                    <span class="font-hand text-slate-400 text-xl sm:text-2xl font-normal ml-1">/ saturdays</span>
+                </h2>
+            </header>
+            
+            <div class="grid sm:grid-cols-3 gap-5">
+                <article class="glass-card rounded-4xl p-6 sm:p-7 bg-gradient-to-b from-white/50 to-transparent">
+                    <h3 class="font-hand text-3xl text-slate-700 mb-2">Saturdays</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        We visit a school nearby. "How does this work?" — we spend an hour answering.
+                    </p>
+                </article>
+                <article class="glass-card rounded-4xl p-6 sm:p-7 bg-gradient-to-b from-stone-100/50 to-transparent">
+                    <h3 class="font-hand text-3xl text-slate-700 mb-2">What we bring</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Old parts, a soldering iron, and a lot of patience. No certificates, just curiosity.
+                    </p>
+                </article>
+                <article class="glass-card rounded-4xl p-6 sm:p-7 bg-gradient-to-b from-sky-100/50 to-transparent">
+                    <h3 class="font-hand text-3xl text-slate-700 mb-2">Why we do it</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        We were those kids who asked too many questions. Nobody had the time then. So now, we do.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- ================= DYNAMIC INJECTION CONTAINER ================= -->
+        <!-- The freeads.js script will inject the volunteer/collaboration card right here -->
+        <section id="dynamic-injection-container" class="scroll-mt-28 reveal">
+            <!-- JavaScript will populate content inside here -->
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="scroll-mt-28 pb-12 reveal">
+            <div class="glass-card rounded-[3rem] p-8 sm:p-14 text-center max-w-2xl mx-auto relative overflow-hidden">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 bg-white/60 rounded-full blur-3xl -z-10"></div>
+                
+                <i data-lucide="mail-open" class="w-8 h-8 text-slate-400 mx-auto mb-5" aria-hidden="true"></i>
+                <h2 class="text-2xl sm:text-3xl font-semibold text-slate-800 mb-3">Say Hello</h2>
+                <p class="text-sm text-slate-500 mb-8 max-w-sm mx-auto leading-relaxed">
+                    We sat down to build a contact form three times. Got distracted three times. So — email works. We actually reply.
+                </p>
+                
+                <a href="mailto:hijibijiteam@gmail.com" aria-label="Send email to Hijibiji" class="inline-flex items-center gap-2 bg-white/90 hover:bg-white text-slate-800 px-7 py-3.5 rounded-full text-sm font-semibold transition-all shadow-sm hover:shadow-md border border-white">
+                    <span>hijibijiteam@gmail.com</span>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-400" aria-hidden="true"></i>
+                </a>
+                
+                <p class="text-[11px] text-slate-400 mt-6 font-medium uppercase tracking-wider">
+                    Reply time: Usually a day. Weekends, give it two. Exam season — don't ask.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="border-t border-slate-200/50 relative z-10 bg-white/30 backdrop-blur-md">
+        <div class="max-w-5xl mx-auto px-4 sm:px-8 py-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <a href="#" class="font-hand text-3xl font-bold tracking-wide text-slate-800 block mb-1 hover:text-slate-600 transition-colors" aria-label="Hijibiji Home">
+                    Hijibiji
+                </a>
+                <p class="text-xs text-slate-500 max-w-xs leading-relaxed">
+                    "Hijibiji" is the Bengali word for scribble — a fair description of our git history.
+                </p>
+            </div>
+            
+            <nav class="flex gap-6 text-xs font-medium text-slate-500 uppercase tracking-wider" aria-label="Footer Navigation">
+                <a href="https://github.com" target="_blank" rel="noopener" class="hover:text-slate-800 transition-colors">GitHub</a>
+                <a href="https://twitter.com" target="_blank" rel="noopener" class="hover:text-slate-800 transition-colors">Twitter</a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener" class="hover:text-slate-800 transition-colors">LinkedIn</a>
+            </nav>
+        </div>
+        <div class="text-center py-4 text-[11px] text-slate-400 font-medium tracking-wide bg-slate-50/50 border-t border-slate-100">
+            &copy; <span id="year"></span> Hijibiji. Best viewed with curiosity. No cookies, no tracking, no nonsense.
+        </div>
+    </footer>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            } else {
+                setTimeout(() => typeof lucide !== 'undefined' && lucide.createIcons(), 500);
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReducedMotion) {
+                reveals.forEach(r => r.classList.add('active'));
+                return;
+            }
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.08,
+                rootMargin: "0px 0px -20px 0px"
+            });
+            reveals.forEach(reveal => revealObserver.observe(reveal));
+        });
+    </script>
+
+    <!-- ================= freeads.js CONTENT ================= -->
+    <!-- NOTE: You can cut the script below and save it as "freeads.js" in your server -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('dynamic-injection-container');
+            
+            if (!container) return;
+
+            // Create the HTML structure dynamically via JavaScript
+            const wrapper = document.createElement('article');
+            wrapper.className = 'glass-card rounded-5xl p-8 sm:p-12 relative overflow-hidden border border-emerald-200/60 bg-gradient-to-br from-white/60 to-emerald-50/30';
+            
+            wrapper.innerHTML = `
+                <div class="absolute -right-10 -top-10 w-40 h-40 bg-emerald-200/30 rounded-full blur-2xl -z-10" aria-hidden="true"></div>
+                
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4 border-b border-slate-200/60 pb-5">
+                    <div>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100/80 text-emerald-800 text-xs font-semibold mb-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-600 animate-ping"></span> Open for Collaboration
+                        </span>
+                        <h2 class="text-xl sm:text-2xl font-semibold text-slate-800">
+                            Work With Us For Free <span class="font-hand text-slate-400 text-xl font-normal">/ volunteer</span>
+                        </h2>
+                    </div>
+                </div>
+                
+                <div class="text-slate-600 text-sm sm:text-base leading-relaxed space-y-4 font-normal mb-8">
+                    <p>
+                        Are you passionate about software, hardware, or R&D? We are opening our doors for curious minds who want to collaborate, experiment, and build cool things with us <strong>purely on a volunteer basis (no financial compensation)</strong>. 
+                    </p>
+                    <p>
+                        If you want to gain real-world experience, contribute to open research, and don't mind the chaos of building things from scratch, we'd love to have you in our collective. Let's sketch some serious tech together.
+                    </p>
+                </div>
+
+                <div>
+                    <a href="mailto:hijibijiteam@gmail.com?subject=Interested%20in%20Free%20Collaboration/Volunteer" class="inline-flex items-center gap-2 bg-emerald-700 text-white px-6 py-3 rounded-full text-xs font-semibold hover:bg-emerald-800 transition-colors shadow-sm">
+                        <span>Email Us to Join</span>
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                    </a>
+                </div>
+            `;
+
+            container.appendChild(wrapper);
+
+            // Re-initialize Lucide icons for the dynamically injected elements
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>
